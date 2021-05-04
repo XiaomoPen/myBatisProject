@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pxm.dao.StudentDao">
+    <select id="getStudentBys" parameterType="Student" resultType="StudentClasses">
+        select * from student s left join classes c on s.classId=c.classId where 1=1
+        <if test="studentId!=null">
+            and s.studentId=#{studentId}
+        </if>
+        <if test="name!=null">
+            and s.name=#{name}
+        </if>
+        <if test="age!=null">
+            and s.age=#{age}
+        </if>
+        <if test="sex!=null">
+            and s.sex=#{sex}
+        </if>
+        <if test="classId!=null">
+            and s.classId=#{classId}
+        </if>
+    </select>
+</mapper>
